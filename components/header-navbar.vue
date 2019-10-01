@@ -1,6 +1,6 @@
 <template>
   <div class="navbar navbar-expand-lg navbar-light navbar-header p-3">
-    <a class="navbar-brand brand" href="#">
+    <a class="navbar-brand brand" href="/">
       <b>[ I N S I D E ]</b>
     </a>
     <button

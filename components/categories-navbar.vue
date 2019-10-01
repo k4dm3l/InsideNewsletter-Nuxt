@@ -5,11 +5,11 @@
       :key="tag.id"
       class="categorie-list align-self-start"
     >
-      <li v-if="index == 0 && index <= 8">
-        <a href="/">All</a>
+      <li v-if="index == 0 && index <= 10">
+        <router-link :to="`/`">All</router-link>
       </li>
       <li v-else>
-        <a href="#">{{ tag.name }}</a>
+        <router-link :to="`/category/${tag.slug}`">{{ tag.name }}</router-link>
       </li>
     </ul>
   </div>

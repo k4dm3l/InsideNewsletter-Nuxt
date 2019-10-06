@@ -42,7 +42,10 @@
             class="col-4"
           >
             <cardnextnewsletter :card_next_newsletter_data="next_newsletter" />
-            <votemodalnewsletter :vote_newsletter_subs_data="next_newsletter" />
+            <votemodalnewsletter
+              @updated="update"
+              :vote_newsletter_subs_data="next_newsletter"
+            />
           </div>
         </div>
       </div>
@@ -83,7 +86,7 @@ export default {
         .get(endpoint)
         .then((response) => {
           response.data.forEach((newsletter) => {
-            if (newsletter.target <= 0) {
+            if (newsletter.target <= newsletter.subscribed) {
               this.newsletters.push(newsletter)
             }
           })
@@ -107,6 +110,14 @@ export default {
         .catch((err) => {
           alert(err)
         })
+    },
+    update() {
+      this.potential_newsletters = []
+      this.getNextNewsletters()
+      document.getElementsByTagName('body')[0].classList.remove('modal-open')
+      document
+        .getElementsByClassName('modal-backdrop fade show')[0]
+        .removeAttribute('class')
     }
   }
 }

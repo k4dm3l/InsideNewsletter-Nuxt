@@ -87,6 +87,7 @@ export default {
                 title: 'Vote Registed',
                 text: `Hey! Wait for this one ${email.value}!!`
               })
+              this.$emit('updated', response.data.newsletter)
             } else {
               Swal.fire({
                 type: 'Ooops...',

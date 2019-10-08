@@ -4,9 +4,17 @@
       class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav"
     >
       <div class="breadcrumb-dn mr-auto">
-        <p>INSIDE</p>
+        <p class="brand">[INSIDE]</p>
       </div>
       <ul class="nav navbar-nav nav-flex-icons ml-auto">
+        <li class="nav-item">
+          <a class="nav-link">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="clearfix d-none d-sm-inline-block">
+              Dashboard
+            </span>
+          </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link">
             <i class="fas fa-envelope"></i>
@@ -32,7 +40,7 @@
             aria-haspopup="true"
             aria-expanded="false"
           >
-            Account
+            Welcome {{ this.$store.state.user.name }}
           </a>
           <div
             class="dropdown-menu dropdown-menu-right"
@@ -50,3 +58,23 @@
 <script>
 export default {}
 </script>
+<style scoped>
+nav {
+  background: #ff5c03;
+}
+.brand {
+  font-size: 2em;
+  font-weight: 800;
+  color: #fff;
+}
+.nav-item {
+  color: #fff;
+  font-size: 1.2em;
+}
+.dropdown {
+  font-weight: 800;
+}
+.nav-link {
+  color: #fff;
+}
+</style>

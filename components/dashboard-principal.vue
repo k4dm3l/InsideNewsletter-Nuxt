@@ -7,7 +7,11 @@
     <div class="card-body">
       <div v-if="newsletters.length > 0" id="table" class="table-editable">
         <span class="table-add float-right mb-3 mr-2">
-          <a @click.prevent="createNewsletter" class="text-success">
+          <a
+            class="text-success"
+            data-toggle="modal"
+            data-target="#register-newsletter"
+          >
             <i class="fas fa-plus fa-2x" aria-hidden="true"></i>
           </a>
         </span>

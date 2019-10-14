@@ -13,7 +13,7 @@
           <div
             v-for="newsletter in newsletters"
             :key="newsletter.id"
-            class="col-4"
+            class="col-4 mt-5"
           >
             <cardnewsletter :card_newsletter_data="newsletter" />
             <modalnewsletter :newsletter_subs_data="newsletter" />
@@ -39,7 +39,7 @@
           <div
             v-for="next_newsletter in potential_newsletters"
             :key="next_newsletter.id"
-            class="col-4"
+            class="col-4 mt-5"
           >
             <cardnextnewsletter :card_next_newsletter_data="next_newsletter" />
             <votemodalnewsletter

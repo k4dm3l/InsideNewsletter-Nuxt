@@ -48,7 +48,7 @@
               <td>
                 <span class="table-remove">
                   <button
-                    @click="deleteRow(newsletter.id)"
+                    @click="deleteNewsletter(newsletter.id)"
                     type="button"
                     class="btn btn-danger btn-rounded btn-sm my-0"
                   >
@@ -56,12 +56,15 @@
                   </button>
                 </span>
                 <span class="table-remove">
-                  <button
-                    type="button"
+                  <a
+                    :newsletter_data="newsletter"
+                    @click="updateNewsletter(newsletter.id)"
                     class="btn btn-info btn-rounded btn-sm my-0"
+                    data-toggle="modal"
+                    data-target="#update-newsletter"
                   >
                     <i class="fas fa-pen-alt"></i>
-                  </button>
+                  </a>
                 </span>
               </td>
             </tr>
@@ -100,22 +103,47 @@ export default {
           alert(err)
         })
     },
-    createNewsletter() {
-      alert(`Create new register!`)
+    updateNewsletter(idElement) {
+      const updObject = this.newsletters.find((newsletter) => {
+        return newsletter.id === idElement
+      })
+      alert(updObject.id)
     },
-    deleteRow(idElement) {
+    deleteNewsletter(idElement) {
+      const endpoint = this.url_end_point
       const aux = this.newsletters
       this.newsletters = []
-      Swal.fire({
-        type: 'success',
-        title: 'Deleted',
-        text: `Row deleted!`
-      })
-      aux.forEach((newsletter) => {
-        if (newsletter.id !== idElement) {
-          this.newsletters.push(newsletter)
-        }
-      })
+
+      axios
+        .delete(`${endpoint}/${idElement}`)
+        .then((response) => {
+          if (response.status === 204) {
+            Swal.fire({
+              type: 'success',
+              title: 'Deleted',
+              text: `Row deleted!`
+            })
+
+            aux.forEach((newsletter) => {
+              if (newsletter.id !== idElement) {
+                this.newsletters.push(newsletter)
+              }
+            })
+          } else {
+            Swal.fire({
+              type: 'Ooops...',
+              title: 'Something happen here',
+              text: `The server response with something... rare!`
+            })
+          }
+        })
+        .catch((err) => {
+          Swal.fire({
+            type: 'Ooops...',
+            title: 'Request Failed',
+            text: `${err}`
+          })
+        })
     }
   }
 }

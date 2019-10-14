@@ -7,6 +7,7 @@
       <div class="mt-5">
         <dashboardprincipal />
         <modalcreatenewsletter @updateTable="updateInfoTable" />
+        <modalupdatenewsletter />
       </div>
     </div>
   </div>
@@ -15,13 +16,15 @@
 import dashboardnav from '@/components/dashboard-nav'
 import dashboardprincipal from '@/components/dashboard-principal'
 import modalcreatenewsletter from '@/components/modalcreatenewsletter'
+import modalupdatenewsletter from '@/components/modalupdatenewsletter'
 export default {
   middleware: 'loggedin',
   layout: 'dashboard_layout',
   components: {
     dashboardnav,
     dashboardprincipal,
-    modalcreatenewsletter
+    modalcreatenewsletter,
+    modalupdatenewsletter
   },
   methods: {
     updateInfoTable() {
